@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: techwiz-laravel-app
+    env: php
+    plan: free
+    # Lệnh build sẽ chạy trên server của Render
+    buildCommand: |
+      composer install -n --prefer-dist --no-dev
+      npm install
+      npm run build
+      php artisan key:generate --force
+      php artisan optimize:clear
+      php artisan optimize
+      php artisan migrate --force
+    # Lệnh start web server
+    startCommand: "apache2-foreground"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_URL
+        # Điền URL của Render vào đây sau khi tạo service
+        value: "https://your-app-name.onrender.com"
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        # Lấy từ Aiven Dashboard
+        value: "aiven-db-host.aivencloud.com" 
+      - key: DB_PORT
+        # Lấy từ Aiven Dashboard (VD: 25060)
+        value: "3306"
+      - key: DB_DATABASE
+        value: "defaultdb"
+      - key: DB_USERNAME
+        value: "avnadmin"
+      - key: DB_PASSWORD
+        sync: false # Set trực tiếp trên Render Dashboard vì lý do bảo mật
