@@ -21,7 +21,4 @@ Thumbs.db
 
 # Scaffolding Files
 /ROADMAP/
-/AGENTS.md
-/CONVENTION.md
-/RULE.md
-/BUGS.md
+/ai/
