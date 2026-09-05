@@ -31,6 +31,7 @@ File này chứa thông tin cấu hình và hướng dẫn bắt buộc dành ch
 ## 4. XỬ LÝ LỖI (ERROR HANDLING)
 - Trả về thông báo lỗi thân thiện với người dùng trong môi trường production (qua View hoặc JSON nếu là API).
 - Log lỗi chi tiết qua hệ thống logging của Laravel (sử dụng Log facade) khi có exception xảy ra. Bất kỳ lỗi phát sinh nào đều phải được ghi vắn tắt nhưng cụ thể nguyên nhân vào file `BUGS.md`.
+- **Chống Ảo Giác (Anti-Hallucination)**: Nếu gặp bug và cố gắng sửa (chạy đi chạy lại) quá 5 phút mà không tìm được nguyên nhân, BẮT BUỘC phải huỷ tác vụ, dừng lại và báo cáo nguyên trạng kết quả cho User (dù kết quả có là gì đi nữa). Tuyệt đối không được liên tục đoán mò và sửa mù quáng dẫn đến ảo giác làm hỏng code.
 
 ## 5. QUY TRÌNH LÀM VIỆC BẮT BUỘC (MANDATORY WORKFLOW)
 Mọi AI Assistant khi bắt đầu một phiên làm việc mới HOẶC nhận một yêu cầu mới, BẮT BUỘC phải tuân thủ nghiêm ngặt theo luồng công việc sau:

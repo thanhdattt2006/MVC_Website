@@ -1,57 +1,78 @@
-# TechWiz 7 Project - Laravel MVC
+# Laravel MVC TechWiz 7 Project
 
-Đây là repository cho dự án TechWiz 7. 
-Thời gian phát triển: 5 Ngày.
-Công nghệ: PHP 8.4, Laravel MVC, Aiven DB, Render.
+Dự án này được xây dựng dựa trên framework **Laravel 11** (hoặc mới nhất) kết hợp với kiến trúc **MVC truyền thống** và **TailwindCSS**. 
+Dưới đây là hướng dẫn chi tiết dành cho các thành viên trong team để clone code về máy và setup môi trường chạy chuẩn xác nhất.
 
-## 🚀 Hướng Dẫn Cài Đặt (Cho Team Member)
+## 🚀 Hướng Dẫn Cài Đặt (Dành Cho Team)
 
-Mỗi người có 4h/ngày, hãy làm đúng theo các bước này để không mất thời gian setup:
-
-### 1. Clone Code
+### Bước 1: Clone mã nguồn về máy
+Mở Terminal (hoặc Git Bash) tại thư mục bạn muốn chứa code và chạy lệnh:
 ```bash
-git clone <url-repo-cua-ban>
+git clone <địa-chỉ-repo-github-của-team>
 cd Laravel_MVC
 ```
+*(Lưu ý: Thay `<địa-chỉ-repo-github-của-team>` bằng URL thật của repo dự án).*
 
-### 2. Cài Đặt Dependencies (PHP & Node)
+### Bước 2: Cài đặt thư viện PHP (Composer)
+Dự án sử dụng Composer để quản lý các package backend. Chạy lệnh:
 ```bash
 composer install
-npm install
 ```
 
-### 3. Cấu hình Môi Trường
-- Copy file `.env.example` thành `.env`:
+### Bước 3: Cài đặt thư viện Frontend (NPM) và Build Tailwind
+Dự án sử dụng **Vite** và **TailwindCSS**. Bắt buộc phải cài đặt node_modules và build frontend thì giao diện mới hiển thị được (nếu không sẽ bị lỗi 500 Vite Manifest Not Found).
 ```bash
-cp .env.example .env
+npm install
+npm run build
 ```
-- Mở file `.env` và điền thông tin Database Aiven mà team leader đã cung cấp (Mục `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`).
-- Chạy lệnh sinh Key:
+*(Mẹo: Khi code giao diện, bạn có thể chạy `npm run dev` ở một terminal riêng biệt để code tự động update (Hot Reload) mà không cần f5).*
+
+### Bước 4: Cấu hình file môi trường (.env)
+Copy file `.env.example` thành file `.env` chứa các config cho máy local của bạn:
+- **Windows (Command Prompt):** `copy .env.example .env`
+- **Mac/Linux/PowerShell:** `cp .env.example .env`
+
+Sau đó mở file `.env` lên và cấu hình lại phần Database. 
+*Nếu team đang xài Database chung trên Aiven:*
+```env
+DB_CONNECTION=mysql
+DB_HOST=<Aiven_Host_Của_Team>
+DB_PORT=<Aiven_Port>
+DB_DATABASE=<Tên_DB>
+DB_USERNAME=<User_Name>
+DB_PASSWORD=<Mật_khẩu>
+```
+*Nếu bạn chạy Database local (XAMPP/Laragon):*
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### Bước 5: Tạo App Key
+Laravel cần key này để mã hóa session và dữ liệu. Chạy lệnh:
 ```bash
 php artisan key:generate
 ```
 
-### 4. Chạy Migration (Tạo Bảng trong DB)
-- **Cảnh báo:** Hãy chắc chắn database đã kết nối được.
+### Bước 6: Chạy Migration (Tạo bảng CSDL)
+Nếu bạn xài DB Local (hoặc DB chung nhưng chưa có bảng), hãy chạy lệnh này để Laravel tạo cấu trúc bảng:
 ```bash
 php artisan migrate
 ```
-- Nếu cần chạy seed (data mẫu): `php artisan migrate --seed`
 
-### 5. Khởi Động Server
-Mở 2 terminal:
-- Terminal 1 (Chạy Laravel):
+### Bước 7: Khởi động Server
+Chạy lệnh sau để bật server ảo của Laravel:
 ```bash
 php artisan serve
 ```
-- Terminal 2 (Biên dịch Frontend Vite/Mix):
-```bash
-npm run dev
-```
+Mở trình duyệt và truy cập: `http://localhost:8000/demo` để kiểm tra thành quả!
 
-Truy cập: `http://localhost:8000`
-
-## 📚 Tài liệu Nội Bộ
-Hãy đọc kỹ các file sau trước khi code:
-1. `CONVENTION.md`: Quy tắc đặt tên, code sạch.
-2. `ROADMAP/`: Thư mục chứa tiến độ. Ai rảnh vào lấy task tick `[x]` nhé.
+---
+## 📝 Quy tắc làm việc (Must Read)
+- Trước khi code, vui lòng đọc kỹ các luật trong file `RULE.md` và `ai/CONVENTION.md`.
+- File theo dõi tiến độ nằm ở `ai/PROGRESS.md`.
+- Bất kỳ lỗi khó nào phát sinh, hãy log vào `ai/BUGS.md`.
