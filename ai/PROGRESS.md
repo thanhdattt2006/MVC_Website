@@ -10,7 +10,7 @@ Cập nhật mỗi ngày/mỗi ca làm việc để toàn team và AI nắm đư
 ## CHI TIẾT CÁC NGÀY
 ### Day 1: Setup & Deploy
 - [x] Khởi tạo Laravel & Repo
-- `[ ]` Connect Aiven DB & Deploy Render
+- [x] Connect Aiven DB & Deploy Render (Tạm thời dùng Local DB)
 - `[ ]` Authentication (Breeze)
 - Tình trạng: ... / Vướng mắc: ...
 

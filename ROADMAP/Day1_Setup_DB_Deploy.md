@@ -36,14 +36,14 @@ TẠM ẨN: Đã được User tự hoàn thành
 
 ## Phase 1.4: Cấu hình Kết Nối DB Local
 
-- `[ ]` Mở file `.env` ở máy tính.
-- `[ ]` Sửa `DB_CONNECTION=mysql`
-- `[ ]` Sửa `DB_HOST=<Aiven Host>`
-- `[ ]` Sửa `DB_PORT=<Aiven Port>`
-- `[ ]` Sửa `DB_DATABASE=<Tên DB>`
-- `[ ]` Sửa `DB_USERNAME=<User>`
-- `[ ]` Sửa `DB_PASSWORD=<Password>`
-- `[ ]` Chạy `php artisan migrate` để test kết nối. Nếu thành công sẽ sinh ra bảng users.
+- [x] Mở file `.env` ở máy tính.
+- [x] Sửa `DB_CONNECTION=mysql`
+- [x] Sửa `DB_HOST=<Aiven Host>` (Tạm thời dùng Localhost theo yêu cầu của bạn)
+- [x] Sửa `DB_PORT=<Aiven Port>`
+- [x] Sửa `DB_DATABASE=<Tên DB>`
+- [x] Sửa `DB_USERNAME=<User>`
+- [x] Sửa `DB_PASSWORD=<Password>`
+- [x] Chạy `php artisan migrate` để test kết nối. Nếu thành công sẽ sinh ra bảng users.
 
 ## Phase 1.5: Chuẩn bị Deploy Render
 
@@ -100,13 +100,13 @@ TẠM ẨN: Cài đặt Authentication (Breeze) do chưa chắc đã dùng
 -->
 
 ## Phase 1.7: Tạo Demo Code (M-V-C) để test flow
-- `[ ]` Chạy lệnh tạo Controller: `php artisan make:controller DemoController`
-- `[ ]` Chạy lệnh tạo Model kèm Migration: `php artisan make:model Demo -m`
-- `[ ]` Trong `DemoController`, viết hàm `index()` trả về view `demo`.
-- `[ ]` Tạo file view: `resources/views/demo.blade.php`.
-- `[ ]` Trong `demo.blade.php`, test thử class Tailwind: `<div class="p-4 bg-blue-500 text-white font-bold text-center rounded-lg shadow-md">Hello TechWiz - Demo MVC</div>`.
-- `[ ]` Khai báo route trong `routes/web.php`: `Route::get('/demo', [App\Http\Controllers\DemoController::class, 'index'])->name('demo');`
-- `[ ]` Khởi động server (`php artisan serve`) và truy cập `http://localhost:8000/demo` để xem kết quả Controller truyền xuống View có hoạt động không.
+- [x] Chạy lệnh tạo Controller: `php artisan make:controller DemoController`
+- [x] Chạy lệnh tạo Model kèm Migration: `php artisan make:model Demo -m`
+- [x] Trong `DemoController`, viết hàm `index()` trả về view `demo`.
+- [x] Tạo file view: `resources/views/demo.blade.php`.
+- [x] Trong `demo.blade.php`, test thử class Tailwind: `<div class="p-4 bg-blue-500 text-white font-bold text-center rounded-lg shadow-md">Hello TechWiz - Demo MVC</div>`.
+- [x] Khai báo route trong `routes/web.php`: `Route::get('/demo', [App\Http\Controllers\DemoController::class, 'index'])->name('demo');`
+- [x] Khởi động server (`php artisan serve`) và truy cập `http://localhost:8000/demo` để xem kết quả Controller truyền xuống View có hoạt động không.
 
 ## Phase 1.10: Tổng kết Day 1
 
